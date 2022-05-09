@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Product>
+@foreach (Product product in Model)
+{
+
+    <tr>
+
+
+        <td style="color:@(product.IsDeleted ? "red":"green")">@(product.IsDeleted ? "DeActive":"Active")</td>
+        <td>
+
+            <a class="btn btn-warning" asp-action="Update" asp-route-status="@ViewBag.Status" asp-route-page="@ViewBag.PageIndex" asp-route-id="@product.Id">Update</a>
+            <a id="@(product.IsDeleted ? "restoreTag":"deleteTag")" class="btn @(product.IsDeleted ? "btn-primary":"btn-danger")" asp-route-status="@ViewBag.Status" asp-route-page="@ViewBag.PageIndex" asp-action="@(product.IsDeleted ? "Restore":"Delete")" asp-route-id="@product.Id">@(product.IsDeleted ? "Restore":"Delete")</a>
+        </td>
+    </tr>
+}

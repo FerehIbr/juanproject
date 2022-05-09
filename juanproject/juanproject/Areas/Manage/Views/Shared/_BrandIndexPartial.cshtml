@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Brand>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+
+            <th scope="col">Image</th>
+            <th scope="col">Status</th>
+            <th scope="col">Setting</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Brand brand in Model)
+        {
+
+            <tr>
+
+                <td><img src="~/assets/img/brand/@brand.Image" /></td>
+
+                <td style="color:@(brand.IsDeleted ? "red":"green")">@(brand.IsDeleted ? "DeActive":"Active")</td>
+                <td>
+
+                    <a class="btn btn-warning" asp-action="Update" asp-route-status="@ViewBag.Status" asp-route-page="@ViewBag.PageIndex" asp-route-id="@brand.Id">Update</a>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

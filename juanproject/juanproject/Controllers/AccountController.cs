@@ -99,15 +99,21 @@ namespace juanproject.Controllers
             return RedirectToAction("index", "home");
 
 
+
         }
-
-
-        public async Task<IActionResult> CreaterRole()
+        public async Task<IActionResult> Logout()
         {
-            await _roleManager.CreateAsync(new IdentityRole { Name = "SuperAdmin" });
-            await _roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
-            await _roleManager.CreateAsync(new IdentityRole { Name = "Member" });
-            return Ok();
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("index", "home");
         }
+
+
+        //public async Task<IActionResult> CreateRole()
+        //{
+        //    await _roleManager.CreateAsync(new IdentityRole { Name = "SuperAdmin" });
+        //    await _roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
+        //    await _roleManager.CreateAsync(new IdentityRole { Name = "Member" });
+        //    return Ok();
+        //}
     }
 }

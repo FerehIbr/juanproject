@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace juanproject.DAL
 {
-    public class JuanDbContext : IdentityDbContext
+    public class JuanDbContext : IdentityDbContext<AppUser>
     {
         public JuanDbContext(DbContextOptions<JuanDbContext> options) : base(options) { }
         public DbSet<Category> Categories { get; set; }
@@ -21,5 +21,6 @@ namespace juanproject.DAL
         public DbSet<Color> Colors { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<Brand> Brands { get; set; }
     }
 }

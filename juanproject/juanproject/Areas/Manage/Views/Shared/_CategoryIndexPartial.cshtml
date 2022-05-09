@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Category>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+
+            <th scope="col">Image</th>
+            <th scope="col">Status</th>
+            <th scope="col">Setting</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Category category in Model)
+        {
+
+        <tr>
+            <td>@category.Name</td>
+            <td style="color:@(category.IsDeleted ? "red":"green")">@(category.IsDeleted ? "DeActive":"Active")</td>
+            <td>
+
+                <a class="btn btn-warning" asp-action="Update" asp-route-status="@ViewBag.Status" asp-route-page="@ViewBag.PageIndex" asp-route-id="@category.Id">Update</a>
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
